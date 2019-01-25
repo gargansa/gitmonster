@@ -52,14 +52,17 @@ class Character extends Component {
             case "down":
                 current_y += amount;
                 break;
+            default:
+                break;
+
         }
         this.setState({ x: current_x, y: current_y })
     }
-    
+
     render() {
-        var userStyle ={
-            color:'blue',
-            position:'absolute',
+        var userStyle = {
+            color: 'blue',
+            position: 'absolute',
             transform: `translate(${this.state.x}px,${this.state.y}px)`,
         }
         return (
@@ -67,8 +70,8 @@ class Character extends Component {
                 <div style={userStyle}>
                     <FontAwesomeIcon icon="user" />
                 </div>
-                <button onClick={() => this.moveTo("branch1")}>Left</button>
-                <button onClick={() => this.moveTo("branch2")}>Right</button>
+                <button onClick={() => this.move(20, "left")}>Left</button>
+                <button onClick={() => this.move(20, "right")}>Right</button>
 
                 <div>Current Location X: {this.state.x}</div>
                 <div>Current Location Y: {this.state.y}</div>

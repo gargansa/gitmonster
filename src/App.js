@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
       <Character />
-      <Branch />
+      <Branch x={100} y={100}/>
       </div>
     );
   }
