@@ -1,3 +1,26 @@
+The gitmonster needs to be defeated.
+attack with bug fixes.
+
+git add . = grab the ammo
+git commit -m = load the cannon
+git push = fire the cannon
+
+git pull = grab to complete an allys action
+git checkout = move into the lane that contains what you want to use
+git merge = combine actions to make them more powerful
+git clone = starts the game
+
+We need a monster with multiple heads oo0oo body in center
+
+names of branches are elements fire ice thunder
+need buttons for actions 
+if the head remains on fire you could pull the fire
+need character to show what lane we are in
+
+
+first step create buttons and make user move
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
