@@ -63,7 +63,7 @@ class Character extends Component {
             transform: `translate(${this.state.x}px,${this.state.y}px)`,
         }
         return (
-            <div className="App">
+            <div className="Character">
                 <div style={userStyle}>
                     <FontAwesomeIcon icon="user" />
                 </div>
