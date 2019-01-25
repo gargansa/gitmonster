@@ -67,10 +67,9 @@ class Character extends Component {
                 <div style={userStyle}>
                     <FontAwesomeIcon icon="user" />
                 </div>
-                <button onClick={() => this.move(20, "left")}>Left</button>
-                <button onClick={() => this.move(20, "right")}>Right</button>
-                <button onClick={() => this.move(20, "up")}>Up</button>
-                <button onClick={() => this.move(20, "down")}>Down</button>
+                <button onClick={() => this.moveTo("branch1")}>Left</button>
+                <button onClick={() => this.moveTo("branch2")}>Right</button>
+
                 <div>Current Location X: {this.state.x}</div>
                 <div>Current Location Y: {this.state.y}</div>
                 <div></div>
