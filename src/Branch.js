@@ -11,13 +11,16 @@ class Branch extends Component {
       height: 50
     }
   }
-  
 
-  componentDidMount(){
-    if (this.props.name==='master'){
-      console.log('master')
-      this.props.updateBranchLocation(this.state.x)
-    }
+
+  componentDidMount() {
+    /// is there a better way to update when the state actually changes
+    setTimeout(()=> {
+      if (this.props.name === 'master') {
+        console.log(this.props.x)
+        this.props.updateBranchLocation(this.props.x)
+      }
+    }, 500);
   }
 
   componentWillReceiveProps(nextProps) {
