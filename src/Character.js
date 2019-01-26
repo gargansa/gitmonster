@@ -16,12 +16,17 @@ class Character extends Component {
         width: 0,
         height: 0,
     }
-    constructor() {
-        super()
-        this.move = this.move.bind(this)
+    constructor(props) {
+        super(props)
+        this.move = this.move.bind(this);
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
-
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.x !== this.state.x) {
+          this.setState({ x: nextProps.x })
+        }
+    
+      }
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener('resize', this.updateWindowDimensions);
@@ -32,7 +37,8 @@ class Character extends Component {
     }
 
     updateWindowDimensions() {
-        this.setState({ x: Math.floor(window.innerWidth / 2), y: Math.floor(window.innerHeight * 0.7), width: window.innerWidth, height: window.innerHeight });
+        // x: Math.floor(window.innerWidth / 2), 
+        this.setState({ y: Math.floor(window.innerHeight * 0.7), width: window.innerWidth, height: window.innerHeight });
     }
 
     move(amount, direction) {
@@ -45,12 +51,6 @@ class Character extends Component {
                 break;
             case "right":
                 current_x += amount;
-                break;
-            case "up":
-                current_y -= amount;
-                break;
-            case "down":
-                current_y += amount;
                 break;
             default:
                 break;
@@ -68,10 +68,10 @@ class Character extends Component {
         return (
             <div className="Character">
                 <div style={userStyle}>
-                    <FontAwesomeIcon icon="user" />
+                    <FontAwesomeIcon size='3x' icon="user" />
                 </div>
-                <button onClick={() => this.move(20, "left")}>Left</button>
-                <button onClick={() => this.move(20, "right")}>Right</button>
+                <button onClick={() => this.move(100, "left")}>Left</button>
+                <button onClick={() => this.move(100, "right")}>Right</button>
 
                 <div>Current Location X: {this.state.x}</div>
                 <div>Current Location Y: {this.state.y}</div>

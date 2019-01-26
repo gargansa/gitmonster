@@ -5,20 +5,23 @@ import Branch from './Branch.js';
 
 class App extends Component {
   state = {
-    x: 0,
-    y: 0,
+    center_x: 0,
+    center_y: 0,
     width: 0,
     height: 0,
+    branch_location_x:0
   }
   constructor() {
     super()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+    this.updateBranchLocation = this.updateBranchLocation.bind(this);
   }
-
+  updateBranchLocation(newX) {
+    this.setState({branch_location_x: newX})
+  }
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-    console.log("in app componentdidmount")
   }
 
   componentWillUnmount() {
@@ -26,9 +29,8 @@ class App extends Component {
   }
 
   updateWindowDimensions() {
-    this.setState({ x: Math.floor(window.innerWidth / 2), y: Math.floor(window.innerHeight * 0.8), width: window.innerWidth, height: window.innerHeight });
+    this.setState({ center_x: Math.floor(window.innerWidth / 2), center_y: Math.floor(window.innerHeight * 0.8), width: window.innerWidth, height: window.innerHeight });
   }
-
 
   render() {
     var appStyle = {
@@ -38,9 +40,12 @@ class App extends Component {
       <div className="App" 
       style={appStyle}
       >
-        <Character />
-        <Branch x={this.state.x-100} y={this.state.y} z={0} />
-        <Branch x={this.state.x+100} y={this.state.y} z={1} />
+        <Character x={this.state.branch_location_x}/>
+        <Branch name={'feature'} x={this.state.center_x-200} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
+        <Branch name={'development'} x={this.state.center_x-100} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
+        <Branch name={'master'} x={this.state.center_x} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
+        <Branch name={'backup'} x={this.state.center_x+100} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
+        <Branch name={'test'} x={this.state.center_x+200} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
       </div>
     );
   }
