@@ -16,13 +16,16 @@ class App extends Component {
     super()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     this.updateBranch = this.updateBranch.bind(this);
+    this.action = this.action.bind(this);
   }
   updateBranch(x,name) {
     this.setState({
       branch_location_x: x,
       branch_name: name
     })
-    
+  }
+  action(thing,name){
+    console.log(thing,name)
   }
   componentDidMount() {
     this.updateWindowDimensions();
@@ -46,11 +49,11 @@ class App extends Component {
       style={appStyle}
       >
         <Character x={this.state.branch_location_x} name={this.state.branch_name}/>
-        <Branch name={'newFeature'} x={this.state.center_x-200} y={this.state.center_y} updateBranch={this.updateBranch}/>
-        <Branch name={'development'} x={this.state.center_x-100} y={this.state.center_y} updateBranch={this.updateBranch}/>
-        <Branch name={'master'} x={this.state.center_x} y={this.state.center_y} updateBranch={this.updateBranch}/>
-        <Branch name={'oldBackup'} x={this.state.center_x+100} y={this.state.center_y} updateBranch={this.updateBranch}/>
-        <Branch name={'advertisement'} x={this.state.center_x+200} y={this.state.center_y} updateBranch={this.updateBranch}/>
+        <Branch name={'newFeature'} x={this.state.center_x-200} y={this.state.center_y} updateBranch={this.updateBranch} action={this.action}/>
+        <Branch name={'development'} x={this.state.center_x-100} y={this.state.center_y} updateBranch={this.updateBranch} action={this.action}/>
+        <Branch name={'master'} x={this.state.center_x} y={this.state.center_y} updateBranch={this.updateBranch} action={this.action}/>
+        <Branch name={'oldBackup'} x={this.state.center_x+100} y={this.state.center_y} updateBranch={this.updateBranch} action={this.action}/>
+        <Branch name={'advertisement'} x={this.state.center_x+200} y={this.state.center_y} updateBranch={this.updateBranch} action={this.action}/>
       </div>
     );
   }

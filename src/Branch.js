@@ -18,7 +18,6 @@ class Branch extends Component {
     /// is there a better way to update when the state actually changes
     setTimeout(() => {
       if (this.props.name === 'master') {
-        console.log(this.props.x)
         this.props.updateBranch(this.props.x, this.props.name)
       }
     }, 500);
@@ -56,11 +55,11 @@ class Branch extends Component {
         </div>
         <div style={localbranchStyle}>
           <button onClick={() => this.props.updateBranch(this.state.x, this.state.name)} >git checkout <br/> {this.state.name}</button>
-          <button onClick={() => {}} >git add .<br/></button>
-          <button onClick={() => {}} >git commit -m""</button>
-          <button onClick={() => {}} >git push</button>
+          <button onClick={()=>this.props.action("add",this.state.name)} >git add .<br/></button>
+          <button onClick={()=>this.props.action("commit",this.state.name)} >git commit -m""</button>
+          <button onClick={()=>this.props.action("push",this.state.name)} >git push</button>
           
-          <button onClick={() => {}} >git merge</button>
+          <button onClick={()=>this.props.action("merge",this.state.name)} >git merge</button>
 
         </div>
       </div>
