@@ -9,15 +9,20 @@ class App extends Component {
     center_y: 0,
     width: 0,
     height: 0,
-    branch_location_x:0
+    branch_location_x:0,
+    branch_name:'',
   }
   constructor() {
     super()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    this.updateBranchLocation = this.updateBranchLocation.bind(this);
+    this.updateBranch = this.updateBranch.bind(this);
   }
-  updateBranchLocation(newX) {
-    this.setState({branch_location_x: newX})
+  updateBranch(x,name) {
+    this.setState({
+      branch_location_x: x,
+      branch_name: name
+    })
+    
   }
   componentDidMount() {
     this.updateWindowDimensions();
@@ -40,12 +45,12 @@ class App extends Component {
       <div className="App" 
       style={appStyle}
       >
-        <Character x={this.state.branch_location_x}/>
-        <Branch name={'feature'} x={this.state.center_x-200} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
-        <Branch name={'development'} x={this.state.center_x-100} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
-        <Branch name={'master'} x={this.state.center_x} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
-        <Branch name={'backup'} x={this.state.center_x+100} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
-        <Branch name={'test'} x={this.state.center_x+200} y={this.state.center_y} updateBranchLocation={this.updateBranchLocation}/>
+        <Character x={this.state.branch_location_x} name={this.state.branch_name}/>
+        <Branch name={'newFeature'} x={this.state.center_x-200} y={this.state.center_y} updateBranch={this.updateBranch}/>
+        <Branch name={'development'} x={this.state.center_x-100} y={this.state.center_y} updateBranch={this.updateBranch}/>
+        <Branch name={'master'} x={this.state.center_x} y={this.state.center_y} updateBranch={this.updateBranch}/>
+        <Branch name={'oldBackup'} x={this.state.center_x+100} y={this.state.center_y} updateBranch={this.updateBranch}/>
+        <Branch name={'advertisement'} x={this.state.center_x+200} y={this.state.center_y} updateBranch={this.updateBranch}/>
       </div>
     );
   }

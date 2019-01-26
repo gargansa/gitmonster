@@ -11,6 +11,7 @@ library.add(faUser)
 class Character extends Component {
 
     state = {
+        name: '',
         x: 0,
         y: 0,
         width: 0,
@@ -25,7 +26,9 @@ class Character extends Component {
         if (nextProps.x !== this.state.x) {
           this.setState({ x: nextProps.x })
         }
-    
+        if (nextProps.name !== this.state.name){
+            this.setState({name: nextProps.name})
+        }
       }
     componentDidMount() {
         this.updateWindowDimensions();
@@ -63,19 +66,14 @@ class Character extends Component {
         var userStyle = {
             color: 'blue',
             position: 'absolute',
-            transform: `translate(${this.state.x}px,${this.state.y}px)`,
+            transform: `translate(${this.state.x-50}px,${this.state.y-50}px)`,
         }
         return (
             <div className="Character">
                 <div style={userStyle}>
-                    <FontAwesomeIcon size='3x' icon="user" />
+                <p>We are in {this.state.name}</p>
+                    <FontAwesomeIcon icon="user" />
                 </div>
-                <button onClick={() => this.move(100, "left")}>Left</button>
-                <button onClick={() => this.move(100, "right")}>Right</button>
-
-                <div>Current Location X: {this.state.x}</div>
-                <div>Current Location Y: {this.state.y}</div>
-                <div></div>
             </div>
         );
     }
